@@ -5,7 +5,9 @@ const JobList = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/jobs").then((res) => {
+    axios.get("http://localhost:8080/api/jobs",
+    { headers: { Authorization: `Bearer ${token}` } }
+).then((res) => {
       setJobs(res.data);
     });
   }, []);
